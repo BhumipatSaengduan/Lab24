@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 
@@ -63,4 +63,22 @@ void List::append(int d){
 	size++;
 }
 
-//Write List::remove() here
+void List::remove(int idx){
+	Node *current = root;
+	if (idx == 0){
+		Node *p = current;
+		current = current->next;
+		root = current;
+		delete p;
+		size--;
+	}
+	else{
+		for(int i = 0; i < idx-1; i++) current = current->next;
+		Node *front = current;
+		Node *p = front->next;
+		Node *back = p->next;
+		front->next = back;
+		delete p;
+		size--;
+	}
+}
